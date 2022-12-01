@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Puzzles\Year2022;
 
 use App\Puzzles\Puzzle;
+use Illuminate\Support\Collection;
 
 class Day01 extends Puzzle
 {
@@ -18,11 +19,15 @@ class Day01 extends Puzzle
         return $this->getCalories($input)->take(3)->sum();
     }
 
-    private function getCalories(string $input)
+    /**
+     * @param string $input
+     * @return Collection<array-key, int>
+     */
+    private function getCalories(string $input): Collection
     {
         return collect(explode("\n\n", $input))
             ->map(fn ($elf) => explode("\n", $elf))
-            ->map(fn ($snacks) => array_sum($snacks))
+            ->map(fn ($snacks) => (int) array_sum($snacks))
             ->sortDesc();
     }
 }
