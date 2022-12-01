@@ -16,7 +16,7 @@ class Day01 extends Puzzle
 
     public function part2(string $input): int
     {
-        return $this->getCalories($input)->take(3)->sum();
+        return $this->getCalories($input)->sortDesc()->take(3)->sum();
     }
 
     /**
@@ -27,7 +27,6 @@ class Day01 extends Puzzle
     {
         return collect(explode("\n\n", $input))
             ->map(fn ($elf) => explode("\n", $elf))
-            ->map(fn ($snacks) => (int) array_sum($snacks))
-            ->sortDesc();
+            ->map(fn ($snacks) => (int) array_sum($snacks));
     }
 }
