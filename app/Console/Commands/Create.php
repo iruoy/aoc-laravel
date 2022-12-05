@@ -35,7 +35,7 @@ class Create extends Command
         $day = $this->argument('day') ?? $now->format('d');
 
         $puzzle = __DIR__.'/../../../app/Puzzles/Year'.$year.'/Day'.$day.'.php';
-        if (!file_exists($puzzle)) {
+        if (! file_exists($puzzle)) {
             file_put_contents($puzzle, <<<END
 <?php
 
@@ -59,11 +59,11 @@ class Day$day extends Puzzle
 }
 
 END
-);
+            );
         }
 
         $test = __DIR__.'/../../../tests/Unit/Year'.$year.'/Day'.$day.'Test.php';
-        if (!file_exists($test)) {
+        if (! file_exists($test)) {
             file_put_contents($test, <<<END
 <?php
 
@@ -87,21 +87,21 @@ class Day{$day}Test extends DayTestCase
 }
 
 END
-);
+            );
         }
 
         $data = __DIR__.'/../../../public/data/'.$year.'/'.$day;
-        if (!file_exists($data)) {
+        if (! file_exists($data)) {
             mkdir($data);
         }
 
         $example = __DIR__.'/../../../public/data/'.$year.'/'.$day.'/example.txt';
-        if (!file_exists($example)) {
+        if (! file_exists($example)) {
             file_put_contents($example, '');
         }
 
         $input = __DIR__.'/../../../public/data/'.$year.'/'.$day.'/input.txt';
-        if (!file_exists($input)) {
+        if (! file_exists($input)) {
             file_put_contents($input, '');
         }
 

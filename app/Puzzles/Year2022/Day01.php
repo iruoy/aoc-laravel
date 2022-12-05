@@ -20,7 +20,7 @@ class Day01 extends Puzzle
     }
 
     /**
-     * @param string $input
+     * @param  string  $input
      * @return Collection<array-key, int>
      */
     private function getCalories(string $input): Collection

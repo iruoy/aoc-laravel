@@ -35,28 +35,28 @@ class Run extends Command
         $test = $this->option('test');
 
         $classString = '\App\Puzzles\Year'.$year.'\Day'.$day;
-        if (!class_exists($classString)) {
+        if (! class_exists($classString)) {
             $this->error('The solution for this day doesn\'t exist.');
 
             return Command::FAILURE;
         }
 
         $solution = new $classString();
-        if (!$solution instanceof Puzzle) {
+        if (! $solution instanceof Puzzle) {
             $this->error('The solution for this day doesn\'t exist.');
 
             return Command::FAILURE;
         }
 
         $filename = __DIR__.'/../../../public/data/'.$year.'/'.$day.'/'.($test ? 'example' : 'input').'.txt';
-        if (!file_exists($filename)) {
+        if (! file_exists($filename)) {
             $this->error('The '.($test ? 'example' : 'input').' for this day doesn\'t exist.');
 
             return Command::FAILURE;
         }
 
         $data = file_get_contents($filename);
-        if (!is_string($data)) {
+        if (! is_string($data)) {
             $this->error('The '.($test ? 'example' : 'input').' for this day doesn\'t exist.');
 
             return Command::FAILURE;

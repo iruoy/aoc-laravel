@@ -10,6 +10,7 @@ use PHPUnit\Framework\TestCase;
 abstract class DayTestCase extends TestCase
 {
     protected Puzzle $puzzle;
+
     protected string $input;
 
     protected function setUp(): void
